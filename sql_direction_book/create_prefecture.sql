@@ -1,0 +1,45 @@
+/* 既存のコード体系を新しい体系に変換して集計 */
+DROP TABLE IF EXISTS PopTbl;
+
+CREATE TABLE IF NOT EXISTS PopTbl(
+    pref_name VARCHAR(32) PRIMARY KEY,
+    population INTEGER NOT NULL
+ );
+
+INSERT INTO PopTbl VALUES('徳島', 100);
+INSERT INTO PopTbl VALUES('香川', 200);
+INSERT INTO PopTbl VALUES('愛媛', 150);
+INSERT INTO PopTbl VALUES('高知', 200);
+INSERT INTO PopTbl VALUES('福岡', 300);
+INSERT INTO PopTbl VALUES('佐賀', 100);
+INSERT INTO PopTbl VALUES('長崎', 200);
+INSERT INTO PopTbl VALUES('東京', 400);
+INSERT INTO PopTbl VALUES('群馬', 50);
+
+
+/* 異なる条件の集計を1つのSQLで行う */
+DROP TABLE IF EXISTS PopTbl2;
+
+CREATE TABLE IF NOT EXISTS PopTbl2(
+    pref_name VARCHAR(32),
+    sex CHAR(1) NOT NULL,
+    population INTEGER NOT NULL,
+    PRIMARY KEY(pref_name, sex)
+);
+
+INSERT INTO PopTbl2 VALUES('徳島', '1', 60 );
+INSERT INTO PopTbl2 VALUES('徳島', '2', 40 );
+INSERT INTO PopTbl2 VALUES('香川', '1', 100);
+INSERT INTO PopTbl2 VALUES('香川', '2', 100);
+INSERT INTO PopTbl2 VALUES('愛媛', '1', 100);
+INSERT INTO PopTbl2 VALUES('愛媛', '2', 50 );
+INSERT INTO PopTbl2 VALUES('高知', '1', 100);
+INSERT INTO PopTbl2 VALUES('高知', '2', 100);
+INSERT INTO PopTbl2 VALUES('福岡', '1', 100);
+INSERT INTO PopTbl2 VALUES('福岡', '2', 200);
+INSERT INTO PopTbl2 VALUES('佐賀', '1', 20 );
+INSERT INTO PopTbl2 VALUES('佐賀', '2', 80 );
+INSERT INTO PopTbl2 VALUES('長崎', '1', 125);
+INSERT INTO PopTbl2 VALUES('長崎', '2', 125);
+INSERT INTO PopTbl2 VALUES('東京', '1', 250);
+INSERT INTO PopTbl2 VALUES('東京', '2', 150);
